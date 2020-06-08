@@ -29,4 +29,6 @@ print(to_sku(item))
 sku = '5021;6'
 
 print(from_sku(sku))
-# {'defindex': 5021, 'quality': 6, 'craftable': True, 'killstreak': 0, 'australium': False, 'festive': False}
+ # {'defindex': 5021, 'quality': 6, 'craftable': True, 'killstreak': 0, 'australium': False,
+ # 'festive': False, 'effect': None, 'paintkit': None, 'wear': None, 'quality2': None, 'target': None,
+ # 'craftnumber': None, 'crateseries': None, 'output': None, 'outputQuality': None}
