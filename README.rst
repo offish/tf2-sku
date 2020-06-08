@@ -1,4 +1,4 @@
-tf2-sku
+tf2_sku
 =======
 |pypi| |license| |stars| |issues| |repo_size| |chat|
 
@@ -88,24 +88,24 @@ SOFTWARE.
 .. _offish: https://offi.sh
 
 
-.. |pypi| image:: https://img.shields.io/pypi/v/tf2-sku.svg
-    :target: https://pypi.org/project/tf2-sku
+.. |pypi| image:: https://img.shields.io/pypi/v/tf2_sku.svg
+    :target: https://pypi.org/project/tf2_sku
     :alt: Latest version released on PyPi
 
-.. |license| image:: https://img.shields.io/github/license/offish/tf2-sku.svg
-    :target: https://github.com/offish/tf2-sku/blob/master/LICENSE
+.. |license| image:: https://img.shields.io/github/license/offish/tf2_sku.svg
+    :target: https://github.com/offish/tf2_sku/blob/master/LICENSE
     :alt: License
 
-.. |stars| image:: https://img.shields.io/github/stars/offish/tf2-sku.svg
-    :target: https://github.com/offish/tf2-sku/stargazers
+.. |stars| image:: https://img.shields.io/github/stars/offish/tf2_sku.svg
+    :target: https://github.com/offish/tf2_sku/stargazers
     :alt: Stars
 
-.. |issues| image:: https://img.shields.io/github/issues/offish/tf2-sku.svg
-    :target: https://github.com/offish/tf2-sku/issues
+.. |issues| image:: https://img.shields.io/github/issues/offish/tf2_sku.svg
+    :target: https://github.com/offish/tf2_sku/issues
     :alt: Issues
 
-.. |repo_size| image:: https://img.shields.io/github/repo-size/offish/tf2-sku.svg
-    :target: https://github.com/offish/tf2-sku
+.. |repo_size| image:: https://img.shields.io/github/repo-size/offish/tf2_sku.svg
+    :target: https://github.com/offish/tf2_sku
     :alt: Repo Size
 
 .. |chat| image:: https://img.shields.io/discord/467040686982692865.svg
