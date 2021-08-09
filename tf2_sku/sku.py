@@ -26,6 +26,9 @@ def to_sku(item):
     item = prettify(item, TEMPLATE)
 
     sku = f'{item["defindex"]};{item["quality"]}'
+    
+    if 'craftable' in item and not item['craftable']:
+        sku += ';uncraftable'
 
     if 'effect' in item and item['effect']:
         sku += f';u{item["effect"]}'
