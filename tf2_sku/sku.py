@@ -46,25 +46,25 @@ def to_sku(item):
         sku += ';strange'
     
     if isinstance(item['killstreak'], int) and not item['killstreak'] == 0:
-        sku += f'kt-{item["killstreak"]}'
+        sku += f';kt-{item["killstreak"]}'
     
     if 'target' in item and item['target']:
-        sku += f'td-{item["target"]}'
+        sku += f';td-{item["target"]}'
 
     if 'festive' in item and item['festive']:
         sku += ';festive'
     
     if 'craftnumber' in item and item['craftnumber']:
-        sku += f'n${item["craftnumber"]}'
+        sku += f';n${item["craftnumber"]}'
     
     if 'crateseries' in item and item['crateseries']:
-        sku += f'c{item["crateseries"]}'
+        sku += f';c{item["crateseries"]}'
     
     if 'output' in item and item['output']:
-        sku += f'od-{item["output"]}'
+        sku += f';od-{item["output"]}'
     
     if 'outputQuality' in item and item['outputQuality']:
-        sku += f'oq-{item["outputQuality"]}'
+        sku += f';oq-{item["outputQuality"]}'
 
     return sku
 
