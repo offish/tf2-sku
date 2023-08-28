@@ -29,7 +29,7 @@ Parse TF2 items to SKU format with Python.
     "craftable": True,
     "wear": -1,
     "skin": -1,
-    "strange": -1,
+    "strange": False,
     "killstreak_tier": 3,
     "target_defindex": -1,
     "festivized": False,
