@@ -1,15 +1,12 @@
 """
-tf2_sku
-=======
+tf2-sku
 Format TF2 items as strings or objects.
 """
 
-
-__title__ = "tf2_sku"
+__title__ = "tf2-sku"
 __author__ = "offish"
 __license__ = "MIT"
-__version__ = "1.0.1"
-
+__version__ = "1.1.0"
 
 from .sku import to_sku, from_sku
-from .prettify import prettify
+from .utils import SKU, MAPPING

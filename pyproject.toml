@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tf2-sku"
+authors = [
+  { name="offish", email="overutilization@gmail.com" },
+]
+description = "Parse TF2 items to SKU format"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["tf2", "sku"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/offish/tf2-sku"
+"Bug Tracker" = "https://github.com/offish/tf2-sku/issues"
+
+[tool.setuptools_scm]

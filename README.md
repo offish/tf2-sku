@@ -1,4 +1,32 @@
-tf2_sku
+# tf2-sku
+Parse TF2 items to SKU format with Python.
+
+## Donate
+- BTC: `bc1qntlxs7v76j0zpgkwm62f6z0spsvyezhcmsp0z2`
+- [Steam Trade Offer](https://steamcommunity.com/tradeoffer/new/?partner=293059984&token=0-l_idZR)
+
+## Usage
+Made to work with `tf2-items`.
+
+
+
+
+## Setup
+### Install
+```bash
+pip install tf2-sku
+# or 
+python -m pip install tf2-sku
+```
+
+### Upgrade
+```bash
+pip upgrade tf2-sku
+# or 
+python -m pip upgrade tf2-sku
+```
+
+
 =======
 |pypi| |license| |stars| |issues| |repo_size| |chat|
 
