@@ -1,4 +1,11 @@
 # tf2-sku
+[![License](https://img.shields.io/github/license/offish/tf2-sku.svg)](https://github.com/offish/tf2-sku/blob/master/LICENSE)
+[![Stars](https://img.shields.io/github/stars/offish/tf2-sku.svg)](https://github.com/offish/tf2-sku/stargazers)
+[![Issues](https://img.shields.io/github/issues/offish/tf2-sku.svg)](https://github.com/offish/tf2-sku/issues)
+[![Size](https://img.shields.io/github/repo-size/offish/tf2-sku.svg)](https://github.com/offish/tf2-sku)
+[![Discord](https://img.shields.io/discord/467040686982692865?color=7289da&label=Discord&logo=discord)](https://discord.gg/t8nHSvA)
+[![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 Parse TF2 items to SKU format with Python.
 
 ## Donate
@@ -6,10 +13,45 @@ Parse TF2 items to SKU format with Python.
 - [Steam Trade Offer](https://steamcommunity.com/tradeoffer/new/?partner=293059984&token=0-l_idZR)
 
 ## Usage
-Made to work with `tf2-items`.
+```python
+>>> from tf2_sku import to_sku, from_sku
 
+>>> to_sku({"defindex": 5021, "quality": 6})
+"5021;6"
+# https://marketplace.tf/items/tf2/5021;6
 
+>>> from_sku("161;3;kt-3")
+{
+    "defindex": 161,
+    "quality": 3,
+    "effect": -1,
+    "australium": False,
+    "craftable": True,
+    "wear": -1,
+    "skin": -1,
+    "strange": -1,
+    "killstreak_tier": 3,
+    "target_defindex": -1,
+    "festivized": False,
+    "craft_number": -1,
+    "crate_number": -1,
+    "output_defindex": -1,
+    "output_quality": -1,
+    "paint": -1,
+}
+# https://marketplace.tf/items/tf2/161;3;kt-3
 
+>>> to_sku({
+...    "defindex": 199,
+...    "quality": 5,
+...    "effect": 702,
+...    "wear": 3,
+...    "skin": 292,
+...    "strange": True,
+...    "killstreak_tier": 3})
+"199;5;u702;w3;pk292;strange;kt-3"
+# https://marketplace.tf/items/tf2/199;5;u702;w3;pk292;strange;kt-3
+```
 
 ## Setup
 ### Install
@@ -26,124 +68,8 @@ pip upgrade tf2-sku
 python -m pip upgrade tf2-sku
 ```
 
-
-=======
-|pypi| |license| |stars| |issues| |repo_size| |chat|
-
-|donate_steam| |donate|
-
-Format items as strings or objects using Python 3. 
-Python port of `node-tf2-sku`_.
-
-.. _node-tf2-sku: https://github.com/Nicklason/node-tf2-sku
-
-.. contents:: Table of Contents
-    :depth: 1
-
-Installing
-----------
-Install and update using `pip`_:
-
-.. code-block:: text
-
-    pip install tf2-sku
-
-.. _pip: https://pip.pypa.io/en/stable/quickstart/
-
-Usage
------
-
-.. code-block:: python
-   
-   from tf2_sku import to_sku, from_sku
-
-    # To SKU
-    # Mann Co. Supply Crate Key
-    item = {
-        'defindex': 5021,
-        'quality': 6,
-        'craftable': True,
-        'killstreak': 0,
-        'australium': False,
-        'festive': False,
-        'effect': None,
-        'paintkit': None,
-        'wear': None,
-        'quality2': None,
-        'target': None,
-        'craftnumber': None,
-        'crateseries': None,
-        'output': None,
-        'outputQuality': None
-    }
-
-    print(to_sku(item))
-    # '5021;6'
-
-
-    # From SKU
-    # Mann Co. Supply Crate Key
-    sku = '5021;6'
-
-    print(from_sku(sku))
-    # {'defindex': 5021, 'quality': 6, 'craftable': True, 'killstreak': 0, 'australium': False, 
-    # 'festive': False, 'effect': None, 'paintkit': None, 'wear': None, 'quality2': None, 'target': None, 
-    # 'craftnumber': None, 'crateseries': None, 'output': None, 'outputQuality': None}
-
-
-License
--------
-Copyright (c) 2020 `offish`_
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-.. _offish: https://offi.sh
-
-
-.. |pypi| image:: https://img.shields.io/pypi/v/tf2_sku.svg
-    :target: https://pypi.org/project/tf2_sku
-    :alt: Latest version released on PyPi
-
-.. |license| image:: https://img.shields.io/github/license/offish/tf2_sku.svg
-    :target: https://github.com/offish/tf2_sku/blob/master/LICENSE
-    :alt: License
-
-.. |stars| image:: https://img.shields.io/github/stars/offish/tf2_sku.svg
-    :target: https://github.com/offish/tf2_sku/stargazers
-    :alt: Stars
-
-.. |issues| image:: https://img.shields.io/github/issues/offish/tf2_sku.svg
-    :target: https://github.com/offish/tf2_sku/issues
-    :alt: Issues
-
-.. |repo_size| image:: https://img.shields.io/github/repo-size/offish/tf2_sku.svg
-    :target: https://github.com/offish/tf2_sku
-    :alt: Repo Size
-
-.. |chat| image:: https://img.shields.io/discord/467040686982692865.svg
-    :target: https://discord.gg/t8nHSvA
-    :alt: Discord
-
-.. |donate_steam| image:: https://img.shields.io/badge/donate-steam-green.svg
-    :target: https://steamcommunity.com/tradeoffer/new/?partner=293059984&token=0-l_idZR
-    :alt: Donate via Steam
-
-.. |donate| image:: https://img.shields.io/badge/donate-paypal-blue.svg
-    :target: https://www.paypal.me/0ffish
-    :alt: Donate via PayPal
+## Testing
+```bash
+# tf2-sku/
+python -m unittest
+```

@@ -30,7 +30,7 @@ class SKU:
     craftable: bool = True
     wear: int = -1
     skin: int = -1
-    strange: int = -1
+    strange: bool = False
     killstreak_tier: int = -1
     target_defindex: int = -1
     festivized: bool = False

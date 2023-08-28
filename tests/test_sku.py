@@ -11,7 +11,7 @@ MANN_CO_KEY = {
     "craftable": True,
     "wear": -1,
     "skin": -1,
-    "strange": -1,
+    "strange": False,
     "killstreak_tier": -1,
     "target_defindex": -1,
     "festivized": False,
