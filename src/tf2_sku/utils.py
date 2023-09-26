@@ -15,7 +15,7 @@ MAPPING = {
     "crate_number": "c{}",
     "output_defindex": "od-{}",
     "output_quality": "oq-{}",
-    "paint": "p",
+    # "paint": "p",
     # "sheen": "ks-{}",
     # "killstreaker": "ke-{}",
 }
@@ -38,7 +38,7 @@ class SKU:
     crate_number: int = -1
     output_defindex: int = -1
     output_quality: int = -1
-    paint: int = -1
+    # paint: int = -1
     # sheen: int = -1
     # killstreaker: int = -1
 
@@ -55,3 +55,14 @@ class SKU:
                 sku += ";" + MAPPING[field.name].format(value)
 
         return sku
+
+
+def get_key_from_value(value: str) -> str:
+    for key in MAPPING:
+        if value == MAPPING[key]:
+            return key
+    return ""
+
+
+def has_string_value(sku_value: str) -> bool:
+    return sku_value in ["uncraftable", "australium", "strange", "festive"]

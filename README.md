@@ -37,7 +37,6 @@ Parse TF2 items to SKU format with Python.
     "crate_number": -1,
     "output_defindex": -1,
     "output_quality": -1,
-    "paint": -1,
 }
 # https://marketplace.tf/items/tf2/161;3;kt-3
 
@@ -48,7 +47,8 @@ Parse TF2 items to SKU format with Python.
 ...    "wear": 3,
 ...    "skin": 292,
 ...    "strange": True,
-...    "killstreak_tier": 3})
+...    "killstreak_tier": 3
+... })
 "199;5;u702;w3;pk292;strange;kt-3"
 # https://marketplace.tf/items/tf2/199;5;u702;w3;pk292;strange;kt-3
 ```

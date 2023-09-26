@@ -19,7 +19,6 @@ MANN_CO_KEY = {
     "crate_number": -1,
     "output_defindex": -1,
     "output_quality": -1,
-    "paint": -1,
 }
 
 
@@ -51,6 +50,27 @@ class TestSKU(TestCase):
         sku_again = to_sku(item_again)
 
         self.assertEqual(sku, sku_again)
+
+    def test_uncraftable(self):
+        orginal = "6526;6;uncraftable;kt-3;td-205"
+        item = from_sku(orginal)
+        sku = to_sku(item)
+
+        self.assertEqual(sku, orginal)
+
+    def test_uncraftable_festive(self):
+        orginal = "208;11;australium;kt-3;festive"
+        item = from_sku(orginal)
+        sku = to_sku(item)
+
+        self.assertEqual(sku, orginal)
+
+    def test_australium_festive(self):
+        orginal = "206;11;australium;festive"
+        item = from_sku(orginal)
+        sku = to_sku(item)
+
+        self.assertEqual(sku, orginal)
 
     def test_skin(self):
         original = "199;5;u702;w3;pk292;strange;kt-3"
