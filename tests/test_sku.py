@@ -59,14 +59,14 @@ class TestSKU(TestCase):
         self.assertEqual(sku, orginal)
 
     def test_uncraftable_festive(self):
-        orginal = "208;11;australium;kt-3;festive"
+        orginal = "305;6;uncraftable;kt-3;festive"
         item = from_sku(orginal)
         sku = to_sku(item)
 
         self.assertEqual(sku, orginal)
 
     def test_australium_festive(self):
-        orginal = "206;11;australium;festive"
+        orginal = "208;11;australium;kt-3;festive"
         item = from_sku(orginal)
         sku = to_sku(item)
 

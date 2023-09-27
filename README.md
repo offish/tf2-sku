@@ -8,6 +8,8 @@
 
 Parse TF2 items to SKU format with Python.
 
+tf2-sku is a dependency in [tf2-utils](https://github.com/offish/tf2-utils), which can get item SKUs directly from inventory/offers. 
+
 ## Donate
 - BTC: `bc1qntlxs7v76j0zpgkwm62f6z0spsvyezhcmsp0z2`
 - [Steam Trade Offer](https://steamcommunity.com/tradeoffer/new/?partner=293059984&token=0-l_idZR)
