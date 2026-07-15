@@ -9,7 +9,7 @@ authors = [
 ]
 description = "Parse TF2 items to SKU format"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 keywords = ["tf2", "sku"]
 classifiers = [
     "Programming Language :: Python :: 3",
