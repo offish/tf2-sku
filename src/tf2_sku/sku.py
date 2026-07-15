@@ -1,53 +1,87 @@
-from .utils import SKU, MAPPING, has_string_value, get_key_from_value
+from dataclasses import dataclass, fields
+
+from .utils import get_defindex, get_properties, get_quality
+
+MAPPING = {
+    "effect": "u{}",
+    "australium": "australium",
+    "craftable": "uncraftable",
+    "wear": "w{}",
+    "skin": "pk{}",
+    "strange": "strange",
+    "killstreak_tier": "kt-{}",
+    "sheen": "ks-{}",
+    "killstreaker": "ke-{}",
+    "target_defindex": "td-{}",
+    "festivized": "festive",
+    "craft_number": "n{}",
+    "crate_number": "c{}",
+    "output_defindex": "od-{}",
+    "output_quality": "oq-{}",
+    # "paint": "p",
+}
+
+
+@dataclass
+class SKU:
+    defindex: int
+    quality: int
+    effect: int = -1
+    australium: bool = False
+    craftable: bool = True
+    wear: int = -1
+    skin: int = -1
+    strange: bool = False
+    killstreak_tier: int = -1
+    sheen: int = -1
+    killstreaker: int = -1
+    target_defindex: int = -1
+    festivized: bool = False
+    craft_number: int = -1
+    crate_number: int = -1
+    output_defindex: int = -1
+    output_quality: int = -1
+    # paint: int = -1
+
+    def __str__(self) -> str:
+        sku = f"{self.defindex};{self.quality}"
+
+        for field in fields(self):
+            if field.name in ["defindex", "quality"]:
+                continue
+
+            value = getattr(self, field.name)
+
+            if value != field.default:
+                sku += ";" + MAPPING[field.name].format(value)
+
+        return sku
+
+
+def has_string_value(sku_value: str) -> bool:
+    return sku_value in ["uncraftable", "australium", "strange", "festive"]
+
+
+def get_key_from_value(value: str) -> str:
+    for key in MAPPING:
+        if value == MAPPING[key]:
+            return key
+
+    return ""
 
 
 def to_sku(item: dict) -> str:
-    """Takes an item dictionary and formats it to a SKU.
-
-    Args:
-        Item dictionary containing specific keys and values.
-
-    Returns:
-        SKU string for given item.
-
-    Example:
-    to_sku({
-        "defindex": 199,
-        "quality": 5,
-        "effect": 702,
-        "australium": False,
-        "craftable": True,
-        "wear": 3,
-        "skin": 292,
-        "strange": True,
-        "killstreak_tier": 3,
-        "target_defindex": -1,
-        "festivized": False,
-        "craft_number": -1,
-        "crate_number": -1,
-        "output_defindex": -1,
-        "output_quality": -1
-    })
-    """
     sku = SKU(**item)
     return str(sku)
 
 
 def from_sku(sku: str) -> dict:
-    """Takes a SKU and formats it to an item dictionary.
-
-    Args:
-        SKU string. E.g. `199;5;u702;w3;pk292;strange;kt-3`
-
-    Returns:
-        Item dictionary containing item properties.
-    """
-    sku_parts = sku.split(";")
-    item = {"defindex": int(sku_parts[0]), "quality": int(sku_parts[1])}
+    parts = get_properties(sku)
+    item = {"defindex": get_defindex(sku), "quality": get_quality(sku)}
 
     # loop through each part of the sku
     # -> u702, w3, pk292, strange, kt-3
-    for sku_value in sku_parts[2:]:
+    for sku_value in parts[2:]:
         # loop through every key
         # effect, australium, craftable
         for map_key in MAPPING:
@@ -58,7 +92,7 @@ def from_sku(sku: str) -> dict:
                 continue
 
             # no chance this is the right key -> skip
-            if not default in sku_value:
+            if default not in sku_value:
                 continue
 
             value = None

@@ -1,87 +1,161 @@
-from src.tf2_sku import to_sku, from_sku
-
-from unittest import TestCase
+from src.tf2_sku import from_sku, to_sku
 
 
-MANN_CO_KEY = {
-    "defindex": 5021,
-    "quality": 6,
-    "effect": -1,
-    "australium": False,
-    "craftable": True,
-    "wear": -1,
-    "skin": -1,
-    "strange": False,
-    "killstreak_tier": -1,
-    "target_defindex": -1,
-    "festivized": False,
-    "craft_number": -1,
-    "crate_number": -1,
-    "output_defindex": -1,
-    "output_quality": -1,
-}
+def test_mann_co_supply_crate_key() -> None:
+    sku = "5021;6"
+    item = {
+        "defindex": 5021,
+        "quality": 6,
+        "effect": -1,
+        "australium": False,
+        "craftable": True,
+        "wear": -1,
+        "skin": -1,
+        "strange": False,
+        "killstreak_tier": -1,
+        "sheen": -1,
+        "killstreaker": -1,
+        "target_defindex": -1,
+        "festivized": False,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
+
+    assert to_sku({"defindex": 5021, "quality": 6}) == sku
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
 
 
-class TestSKU(TestCase):
-    def test_key(self):
-        sku = "5021;6"
-        item = {"defindex": 5021, "quality": 6}
-        result = to_sku(item)
+def test_uncraftable_team_captain() -> None:
+    sku = "378;6;uncraftable"
+    item = {
+        "defindex": 378,
+        "quality": 6,
+        "effect": -1,
+        "australium": False,
+        "craftable": False,
+        "wear": -1,
+        "skin": -1,
+        "strange": False,
+        "killstreak_tier": -1,
+        "sheen": -1,
+        "killstreaker": -1,
+        "target_defindex": -1,
+        "festivized": False,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
 
-        item_dict = from_sku(sku)
+    assert to_sku({"defindex": 378, "quality": 6, "craftable": False}) == sku
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
 
-        skued = to_sku(MANN_CO_KEY)
 
-        self.assertEqual(result, sku)
-        self.assertEqual(item_dict, MANN_CO_KEY)
-        self.assertEqual(sku, skued)
+def test_professional_rocket_launcher_kit() -> None:
+    sku = "6526;6;uncraftable;kt-3;td-205"
+    item = {
+        "defindex": 6526,
+        "quality": 6,
+        "effect": -1,
+        "australium": False,
+        "craftable": False,
+        "wear": -1,
+        "skin": -1,
+        "strange": False,
+        "killstreak_tier": 3,
+        "sheen": -1,
+        "killstreaker": -1,
+        "target_defindex": 205,
+        "festivized": False,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
 
-    def test_from_sku(self):
-        sku = "5021;6"
-        item = from_sku(sku)
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
 
-        self.assertEqual(item, MANN_CO_KEY)
 
-    def test_ellis_cap_double(self):
-        item = {"defindex": 236, "quality": 6}
-        sku = to_sku(item)
+def test_professional_festivized_australium_flame_thrower() -> None:
+    sku = "208;11;australium;kt-3;festive"
+    item = {
+        "defindex": 208,
+        "quality": 11,
+        "effect": -1,
+        "australium": True,
+        "craftable": True,
+        "wear": -1,
+        "skin": -1,
+        "strange": False,
+        "killstreak_tier": 3,
+        "sheen": -1,
+        "killstreaker": -1,
+        "target_defindex": -1,
+        "festivized": True,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
 
-        item_again = from_sku(sku)
-        sku_again = to_sku(item_again)
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
 
-        self.assertEqual(sku, sku_again)
 
-    def test_uncraftable(self):
-        orginal = "6526;6;uncraftable;kt-3;td-205"
-        item = from_sku(orginal)
-        sku = to_sku(item)
+def test_professional_strange_isotope_potent_poison_shotgun_field_tested() -> None:
+    sku = "199;5;u702;w3;pk292;strange;kt-3"
+    item = {
+        "defindex": 199,
+        "quality": 5,
+        "effect": 702,
+        "australium": False,
+        "craftable": True,
+        "wear": 3,
+        "skin": 292,
+        "strange": True,
+        "killstreak_tier": 3,
+        "sheen": -1,
+        "killstreaker": -1,
+        "target_defindex": -1,
+        "festivized": False,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
 
-        self.assertEqual(sku, orginal)
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
 
-    def test_uncraftable_festive(self):
-        orginal = "305;6;uncraftable;kt-3;festive"
-        item = from_sku(orginal)
-        sku = to_sku(item)
 
-        self.assertEqual(sku, orginal)
+def test_professional_energy_orb_festivized_masked_mender_medi_gun_minimal_wear_manndarin_singularity() -> (
+    None
+):
+    sku = "15008;15;u704;w2;pk5;kt-3;ks-3;ke-2006;festive"
+    item = {
+        "defindex": 15008,
+        "quality": 15,
+        "effect": 704,
+        "australium": False,
+        "craftable": True,
+        "wear": 2,
+        "skin": 5,
+        "strange": False,
+        "killstreak_tier": 3,
+        "sheen": 3,
+        "killstreaker": 2006,
+        "target_defindex": -1,
+        "festivized": True,
+        "craft_number": -1,
+        "crate_number": -1,
+        "output_defindex": -1,
+        "output_quality": -1,
+    }
 
-    def test_australium_festive(self):
-        orginal = "208;11;australium;kt-3;festive"
-        item = from_sku(orginal)
-        sku = to_sku(item)
-
-        self.assertEqual(sku, orginal)
-
-    def test_skin(self):
-        original = "199;5;u702;w3;pk292;strange;kt-3"
-        item = from_sku(original)
-        sku = to_sku(item)
-
-        self.assertEqual(sku, original)
-
-    def test_types(self):
-        item_dict = from_sku("5021;6")
-        sku = to_sku(item_dict)
-
-        self.assertTrue(isinstance(item_dict, dict))
-        self.assertTrue(isinstance(sku, str))
+    assert to_sku(item) == sku
+    assert from_sku(sku) == item
